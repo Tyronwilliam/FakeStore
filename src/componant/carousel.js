@@ -33,7 +33,7 @@ function Carousel() {
   }
 
   return (
-    <div className="relative w-full lg:h-[800px] bg-slate-900">
+    <div className="relative w-full lg:h-screen bg-slate-900">
       <div className="flex z-30 absolute lg:bottom-30  bottom-10 right-5 w-auto justify-between">
         <ChevronLeftIcon
           className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500"
@@ -44,10 +44,7 @@ function Carousel() {
           onClick={() => nextSlide()}
         />
       </div>
-      {/* <div
-        className="w-6 h-full flex items-center bg-gray-500 opacity-25  z-30 absolute right-0 "
-        onClick={() => nextSlide()}
-      ></div> */}
+
       {SliderData.map((slide, index) => {
         return (
           <div
@@ -67,11 +64,11 @@ function Carousel() {
             )}
             {index === current && (
               <div className=" hidden  absolute top-[30%] right-[50%] lg:right-[61%] w-72 h-32 md:flex md:flex-col justify-between ">
-                <p className="text-gray-200 font-bold text-2xl ">
+                <p className="text-gray-200 font-bold text-2xl  ">
                   {slide.text}
                 </p>
                 <p className=" text-gray-100">{slide.description}</p>
-                <p className=" text-orange-500">{slide.shop} </p>
+                <p className=" text-orange-500 cursor-pointer border-b border-orange-500 w-fit hover:text-white">{slide.shop} </p>
               </div>
             )}
           </div>

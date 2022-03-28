@@ -16,8 +16,8 @@ function Trending() {
       });
   }, []);
   return (
-    <div className="px-5 w-full mx-auto">
-      <div className="mb-10 ml-[70px]">
+    <div className="px-5 lg:px-10 max-w-[1024px] mx-auto">
+      <div className="mb-10">
         <h1 className="text-2xl mb-3 font-semibold">Produits Tendances</h1>
         <p className="text-gray-600">
           Nos produits les plus tendances sur la base des ventes. Mise à jour
@@ -36,6 +36,9 @@ function Trending() {
           );
         })}
       </div>
+      <button className="p-3 border border-gray-400 rounded-sm mx-auto block mt-5 font-medium active:bg-black active:text-white">
+        LOAD MORE
+      </button>
     </div>
   );
 }

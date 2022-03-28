@@ -1,7 +1,23 @@
+/* Title Font  */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+/* Body Font */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+/* Default Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Reset CSS  */
 * {
   margin: 0;
   box-sizing: border-box;
+}
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-montserrat
+  }
 }
