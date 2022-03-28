@@ -1,0 +1,84 @@
+import React, { useState } from "react";
+import { ChevronLeftIcon } from "@heroicons/react/outline";
+import { ChevronRightIcon } from "@heroicons/react/outline";
+import Bag from "../asset/bag.jpg";
+import WomenGray from "../asset/longgraycoat.jpg";
+import Shopping from "../asset/shopingWomen.jpg";
+function Carousel() {
+  const SliderData = [
+    {
+      image: WomenGray,
+      text: "Lorem ipsum dolor sit ",
+      description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. ",
+      shop: "Shop Now",
+    },
+    {
+      image: Bag,
+    },
+    {
+      image: Shopping,
+    },
+  ];
+  const [current, setCurrent] = useState(0);
+  let slides = SliderData;
+  const length = slides.length;
+  const nextSlide = () => {
+    setCurrent(current === length - 1 ? 0 : current + 1);
+  };
+  const previousSlide = () => {
+    setCurrent(current === 0 ? length - 1 : current - 1);
+  };
+  if (!Array.isArray(slides) || slides.length <= 0) {
+    return null;
+  }
+
+  return (
+    <div className="relative w-full lg:h-[800px] bg-slate-900">
+      <div className="flex z-30 absolute lg:bottom-30  bottom-10 right-5 w-auto justify-between">
+        <ChevronLeftIcon
+          className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500"
+          onClick={() => previousSlide()}
+        />
+        <ChevronRightIcon
+          className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500"
+          onClick={() => nextSlide()}
+        />
+      </div>
+      {/* <div
+        className="w-6 h-full flex items-center bg-gray-500 opacity-25  z-30 absolute right-0 "
+        onClick={() => nextSlide()}
+      ></div> */}
+      {SliderData.map((slide, index) => {
+        return (
+          <div
+            className={
+              index === current
+                ? "w-full md:w-full md:h-full h-full transition-opacity duration-1000 ease-out relative"
+                : "transition-opacity opacity-0"
+            }
+            key={index}
+          >
+            {index === current && (
+              <img
+                className="w-full h-full object-fit "
+                src={slide.image}
+                alt="carousel"
+              />
+            )}
+            {index === current && (
+              <div className=" hidden  absolute top-[30%] right-[50%] lg:right-[61%] w-72 h-32 md:flex md:flex-col justify-between ">
+                <p className="text-gray-200 font-bold text-2xl ">
+                  {slide.text}
+                </p>
+                <p className=" text-gray-100">{slide.description}</p>
+                <p className=" text-orange-500">{slide.shop} </p>
+              </div>
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+export default Carousel;
