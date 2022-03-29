@@ -13,7 +13,7 @@ function Main() {
       {/* Small Screen Nav */}
       <SmallNav />
       {/* Big Screen Nav */}
-      <BigNav />
+      {/* <BigNav /> */}
       {/* Section Main Products */}
       <article>
         {/* Carousel */}

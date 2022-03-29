@@ -3,6 +3,8 @@ import { MenuIcon } from "@heroicons/react/solid";
 import { XIcon } from "@heroicons/react/solid";
 import { HeartIcon } from "@heroicons/react/outline";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon } from "@heroicons/react/solid";
+
 function SmallNav() {
   const [open, setOpen] = useState(false);
 
@@ -45,12 +47,29 @@ function SmallNav() {
 
           <nav className="w-full h-48">
             <ul className="flex flex-col justify-between w-full h-full ">
-              <li className="hover:text-orange-500">Accueil</li>
-              <li className="hover:text-orange-500">Boutique</li>
-              <li className="hover:text-orange-500">Collections</li>
-              <li className="hover:text-orange-500">Blog</li>
-              <li className="hover:text-orange-500">Pages</li>
-              <li className="hover:text-orange-500">Element</li>
+              <li className="hover:text-orange-500 flex">
+                Accueil{" "}
+                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              </li>
+              <li className="hover:text-orange-500 flex">
+                Boutique{" "}
+                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              </li>
+              <li className="hover:text-orange-500 flex">
+                Collections{" "}
+                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              </li>
+              <li className="hover:text-orange-500 flex">
+                Blog <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              </li>
+              <li className="hover:text-orange-500 flex">
+                Pages{" "}
+                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              </li>
+              <li className="hover:text-orange-500 flex">
+                Element{" "}
+                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              </li>
             </ul>
           </nav>
         </div>

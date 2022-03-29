@@ -4,6 +4,7 @@ import Instagram from "../asset/instagram.png";
 import Twitter from "../asset/twitter.png";
 import France from "../asset/france.png";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import BigNav from "./bigNav";
 function Header() {
   const [open, setOpen] = useState(false);
   const [registration, setRegistration] = useState("login");
@@ -73,7 +74,7 @@ function Header() {
           </div>
         </div>
         {open && (
-          <div className="w-full bg-white h-screen z-50 absolute px-5 pt-5 flex flex-col items-center   left-0 top-0 border-b-2 border-gray-200">
+          <div className="w-full bg-white h-screen z-50 absolute px-5 pt-20 flex flex-col items-center   left-0 top-0 border-b-2 border-gray-200 ">
             <div className="flex mb-5">
               <p
                 className={
@@ -158,6 +159,7 @@ function Header() {
           </div>
         )}
       </header>
+      <BigNav />
     </div>
   );
 }
