@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Man from "../asset/manglasses.jpg";
 import { XCircleIcon } from "@heroicons/react/outline";
 import CategoryList from "./smallScreenComposant/categoryList";
 import FiltreList from "./smallScreenComposant/filtreList";
+import { connect } from "react-redux";
+import { loadData } from "../action/apiData/apiDataAction";
+import ProductTemplate from "./defaultPrint/productTemplate";
 import { getAll } from "./Api/fonction";
-
-function Boutique() {
+function Boutique(props) {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
-  const [allProducts, setAllProducts] = useState([]);
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
   const handleOpen = () => {
     open ? setOpen(false) : setOpen(true);
@@ -16,27 +18,14 @@ function Boutique() {
   const handleOpen1 = () => {
     open1 ? setOpen1(false) : setOpen1(true);
   };
-
-  const whatProduct = (param) => {
-    switch (param) {
-      case "Toute":
-        return getAll()
-          .then((res) => {
-            console.log(res, "via cat");
-            setAllProducts(res);
-            return res;
-          })
-          .catch((err) => {
-            console.log(err, "mon erreur");
-            return err;
-          });
-
-        break;
-
-      default:
-        break;
-    }
-  };
+  useEffect(() => {
+    getAll().then((res) => {
+      return setSelectedProducts(res);
+    });
+  }, []);
+  useEffect(() => {
+    setSelectedProducts(props.article.article);
+  }, [props.article.article]);
   return (
     <div className="">
       {/* Banner Boutique on Top  */}
@@ -86,11 +75,29 @@ function Boutique() {
           </div>
         </div>
         {/* Products */}
-        {}
+        {selectedProducts &&
+          selectedProducts?.map((products) => {
+            return (
+              <ProductTemplate
+                key={products.id}
+                image={products.image}
+                title={products.title}
+                price={products.price}
+              />
+            );
+          })}
       </div>
       {/* View */}
     </div>
   );
 }
 
-export default Boutique;
+const mapStateToProps = (store) => {
+  return {
+    article: store.article,
+  };
+};
+const mapDispatchToProps = {
+  loadData,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Boutique);

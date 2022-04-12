@@ -4,7 +4,6 @@ import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import HomeModal from "./modal/homeModal";
-import { Link } from "react-router-dom";
 
 function BigNav() {
   const [open, setOpen] = useState(false);
@@ -37,7 +36,7 @@ function BigNav() {
               <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
             </li>
             {open === true && navTitle === "accueil" ? (
-              <HomeModal title="home" link="" />
+              <HomeModal title="Home" link="" />
             ) : null}
 
             <li
@@ -51,7 +50,7 @@ function BigNav() {
               <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
             </li>
             {open === true && navTitle === "boutique" ? (
-              <HomeModal title="test" link="boutique" />
+              <HomeModal title="Test" link="boutique" />
             ) : null}
 
             <li className="hover:text-orange-500 cursor-pointer flex">
