@@ -1,7 +1,5 @@
 import React from "react";
 
-import SmallNav from "./smallNav";
-import BigNav from "./bigNav";
 import Carousel from "./carousel";
 import Partner from "./partner";
 import Trending from "./trending";
@@ -9,11 +7,7 @@ import Products from "./products";
 
 function Main() {
   return (
-    <div className="">
-      {/* Small Screen Nav */}
-      <SmallNav />
-      {/* Big Screen Nav */}
-      {/* <BigNav /> */}
+    <div>
       {/* Section Main Products */}
       <article>
         {/* Carousel */}

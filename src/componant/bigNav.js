@@ -17,9 +17,9 @@ function BigNav() {
     }
   };
   return (
-    <div className="hidden md:flex justify-between px-4 pt-6 mb-8">
+    <div className="hidden md:flex justify-between px-4 pt-6 mb-8 md:text-[15px]">
       {/* Logo */}
-      <h1 className="cursor-pointer font-bold md:hidden lg:block">
+      <h1 className="cursor-pointer font-bold md:hidden lg:block lg:text-lg">
         TheFakeStore.
       </h1>
       {/* Nav */}

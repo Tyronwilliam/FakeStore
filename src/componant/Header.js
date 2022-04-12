@@ -5,6 +5,7 @@ import Twitter from "../asset/twitter.png";
 import France from "../asset/france.png";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import BigNav from "./bigNav";
+import SmallNav from "./smallScreenComposant/smallNav";
 function Header() {
   const [open, setOpen] = useState(false);
   const [registration, setRegistration] = useState("login");
@@ -159,6 +160,8 @@ function Header() {
           </div>
         )}
       </header>
+      <SmallNav />
+
       <BigNav />
     </div>
   );

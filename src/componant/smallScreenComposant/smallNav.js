@@ -16,7 +16,7 @@ function SmallNav() {
     }
   };
   return (
-    <div className="p-4 max-w-[425px] md:hidden relative">
+    <div className="p-4 max-w-[425px] md:hidden relative text-sm">
       {open === true ? (
         <XIcon
           className="w-8 h-8 mb-3"

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ProductTemplate from "./productTemplate";
+import ProductTemplate from "./defaultPrint/productTemplate";
 
 function Trending() {
   const [trend, setTrend] = useState([]);
