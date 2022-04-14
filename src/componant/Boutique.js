@@ -11,12 +11,17 @@ function Boutique(props) {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
+  const [pagination, setPagination] = useState(4);
 
+  const slice = selectedProducts.slice(0, pagination);
   const handleOpen = () => {
     open ? setOpen(false) : setOpen(true);
   };
   const handleOpen1 = () => {
     open1 ? setOpen1(false) : setOpen1(true);
+  };
+  const loadMore = () => {
+    setPagination(pagination + pagination);
   };
   useEffect(() => {
     getAll().then((res) => {
@@ -25,6 +30,7 @@ function Boutique(props) {
   }, []);
   useEffect(() => {
     setSelectedProducts(props.article.article);
+    setPagination(4);
   }, [props.article.article]);
   return (
     <div className="">
@@ -67,25 +73,41 @@ function Boutique(props) {
           <FiltreList />
         </div>
         {/* Number of Products */}
-        <div className="md:flex">
-          <p className="">Nombre + produits trouvés</p>
-          <div className="flex items-center md:ml-5">
+        <div className="md:flex mb-5">
+          <div className="flex">
+            <p className="font-semibold text-orange-500">
+              {selectedProducts.length}{" "}
+            </p>
+            <p className="ml-1 font-semibold">produits trouvés |</p>
+          </div>
+          <div className="flex items-center  md:ml-1 text-orange-500">
             <XCircleIcon className="w-4 h-4" />
             <p>Supprimer les filtres</p>
           </div>
         </div>
         {/* Products */}
-        {selectedProducts &&
-          selectedProducts?.map((products) => {
-            return (
-              <ProductTemplate
-                key={products.id}
-                image={products.image}
-                title={products.title}
-                price={products.price}
-              />
-            );
-          })}
+        <div className="flex flex-wrap md:gap-7 justify-center">
+          {slice &&
+            slice?.map((products) => {
+              return (
+                <ProductTemplate
+                  key={products.id}
+                  image={products.image}
+                  title={products.title}
+                  price={products.price}
+                  count={products.rating.count}
+                />
+              );
+            })}
+        </div>
+        <button
+          className="p-3 border border-gray-400 rounded-sm mx-auto block mt-5 font-semibold active:bg-black active:text-white hover:bg-black hover:text-white"
+          onClick={() => {
+            loadMore();
+          }}
+        >
+          LOAD MORE
+        </button>
       </div>
       {/* View */}
     </div>

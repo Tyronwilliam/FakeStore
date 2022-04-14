@@ -4,6 +4,7 @@ import Instagram from "../asset/instagram.png";
 import Twitter from "../asset/twitter.png";
 import France from "../asset/france.png";
 import { ChevronDownIcon } from "@heroicons/react/solid";
+import { XIcon } from "@heroicons/react/outline";
 import BigNav from "./bigNav";
 import SmallNav from "./smallScreenComposant/smallNav";
 function Header() {
@@ -75,88 +76,96 @@ function Header() {
           </div>
         </div>
         {open && (
-          <div className="w-full bg-white h-screen z-50 absolute px-5 pt-20 flex flex-col items-center   left-0 top-0 border-b-2 border-gray-200 ">
-            <div className="flex mb-5">
-              <p
-                className={
-                  registration === "login"
-                    ? "cursor-pointer"
-                    : "text-gray-500 cursor-pointer"
-                }
-                onClick={() => {
-                  setRegistration("login");
-                }}
-              >
-                SE CONNECTER
-              </p>
-              <p
-                className={
-                  registration !== "login"
-                    ? "cursor-pointer ml-5"
-                    : "text-gray-500 cursor-pointer  ml-5"
-                }
-                onClick={() => {
-                  setRegistration("register");
-                }}
-              >
-                S'ENREGISTRER
-              </p>
+          <div>
+            <div className="w-full bg-white h-screen z-50 absolute px-5 pt-20 flex flex-col items-center   left-0 top-0 border-b-2 border-gray-200 ">
+              <div className="flex mb-5">
+                <p
+                  className={
+                    registration === "login"
+                      ? "cursor-pointer"
+                      : "text-gray-500 cursor-pointer"
+                  }
+                  onClick={() => {
+                    setRegistration("login");
+                  }}
+                >
+                  SE CONNECTER
+                </p>
+                <p
+                  className={
+                    registration !== "login"
+                      ? "cursor-pointer ml-5"
+                      : "text-gray-500 cursor-pointer  ml-5"
+                  }
+                  onClick={() => {
+                    setRegistration("register");
+                  }}
+                >
+                  S'ENREGISTRER
+                </p>
+              </div>
+              {registration === "login" ? (
+                <div>
+                  <p className="text-sm mb-10 xl:text-lg">
+                    Bienvenue à nouveau, veuillez entrer votre email et votre
+                    mot de passe pour vous connecter
+                  </p>{" "}
+                  <form className="flex flex-col w-72 sm:w-80 gap-4 mx-auto">
+                    <input
+                      type="text"
+                      name="email"
+                      className="border border-gray-500 rounded-sm p-2 w-full"
+                      placeholder="Email"
+                    />
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Mot de passe"
+                      className="border border-gray-500 rounded-sm p-2 w-full mb-4"
+                    />
+                    <button className="w-full bg-orange-500 p-3 rounded-sm text-white font-semibold">
+                      ME CONNECTER
+                    </button>
+                  </form>
+                </div>
+              ) : (
+                <div>
+                  <p className="text-sm mb-10 xl:text-lg">
+                    Bienvenue, veuillez entrer votre email et votre mot de passe
+                    pour vous connecter
+                  </p>{" "}
+                  <form className="flex flex-col w-72 sm:w-80 gap-4 mx-auto">
+                    <input
+                      type="text"
+                      name="email"
+                      className="border border-gray-500 rounded-sm p-2 w-full"
+                      placeholder="Email"
+                    />
+                    <input
+                      type="password"
+                      name="password"
+                      placeholder="Mot de passe"
+                      className="border border-gray-500 rounded-sm p-2 w-full"
+                    />
+                    <input
+                      type="password"
+                      name="password2"
+                      placeholder=" Confirmez votre mot de passe"
+                      className="border border-gray-500 rounded-sm p-2 w-full mb-4"
+                    />
+                    <button className="w-full bg-orange-500 p-3 rounded-sm text-white font-semibold">
+                      S'ENREGISTRER
+                    </button>
+                  </form>
+                </div>
+              )}
             </div>
-            {registration === "login" ? (
-              <div>
-                <p className="text-sm mb-10 xl:text-lg">
-                  Bienvenue à nouveau, veuillez entrer votre email et votre mot
-                  de passe pour vous connecter
-                </p>{" "}
-                <form className="flex flex-col w-72 sm:w-80 gap-4 mx-auto">
-                  <input
-                    type="text"
-                    name="email"
-                    className="border border-gray-500 rounded-sm p-2 w-full"
-                    placeholder="Email"
-                  />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Mot de passe"
-                    className="border border-gray-500 rounded-sm p-2 w-full mb-4"
-                  />
-                  <button className="w-full bg-orange-500 p-3 rounded-sm text-white font-semibold">
-                    ME CONNECTER
-                  </button>
-                </form>
-              </div>
-            ) : (
-              <div>
-                <p className="text-sm mb-10 xl:text-lg">
-                  Bienvenue, veuillez entrer votre email et votre mot de passe
-                  pour vous connecter
-                </p>{" "}
-                <form className="flex flex-col w-72 sm:w-80 gap-4 mx-auto">
-                  <input
-                    type="text"
-                    name="email"
-                    className="border border-gray-500 rounded-sm p-2 w-full"
-                    placeholder="Email"
-                  />
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Mot de passe"
-                    className="border border-gray-500 rounded-sm p-2 w-full"
-                  />
-                  <input
-                    type="password"
-                    name="password2"
-                    placeholder=" Confirmez votre mot de passe"
-                    className="border border-gray-500 rounded-sm p-2 w-full mb-4"
-                  />
-                  <button className="w-full bg-orange-500 p-3 rounded-sm text-white font-semibold">
-                    S'ENREGISTRER
-                  </button>
-                </form>
-              </div>
-            )}
+            <XIcon
+              className="w-6 h-6 text-orange-500 z-50 absolute left-10 top-50 cursor-pointer"
+              onClick={() => {
+                handleClick();
+              }}
+            />
           </div>
         )}
       </header>

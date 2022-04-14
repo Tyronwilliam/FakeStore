@@ -22,7 +22,7 @@ function BigNav() {
         TheFakeStore.
       </h1>
       {/* Nav */}
-      <div className="flex justify-between w-[700px] ">
+      <div className="flex justify-between lg:w-[700px] md:w-full ">
         <nav className="relative">
           <ul className="flex justify-between">
             <li

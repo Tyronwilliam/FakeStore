@@ -4,6 +4,11 @@ import ProductTemplate from "./defaultPrint/productTemplate";
 
 function Trending() {
   const [trend, setTrend] = useState([]);
+  const [pagination, setPagination] = useState(4);
+  const slice = trend.slice(0, pagination);
+  const loadMore = () => {
+    setPagination(pagination + pagination);
+  };
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products?limit=8&sort=desc")
@@ -25,18 +30,25 @@ function Trending() {
         </p>
       </div>
       <div className="flex flex-wrap md:gap-7 justify-center">
-        {trend?.map((tre) => {
+        {slice?.map((tre) => {
           return (
             <ProductTemplate
               key={tre.id}
               image={tre.image}
+              array={slice}
               title={tre.title}
               price={tre.price}
+              count={tre.rating.count}
             />
           );
         })}
       </div>
-      <button className="p-3 border border-gray-400 rounded-sm mx-auto block mt-5 font-medium active:bg-black active:text-white">
+      <button
+        className="p-3 border border-gray-400 rounded-sm mx-auto block mt-5 font-semibold active:bg-black active:text-white hover:bg-black hover:text-white"
+        onClick={() => {
+          loadMore();
+        }}
+      >
         LOAD MORE
       </button>
     </div>

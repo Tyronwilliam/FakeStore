@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { MenuIcon } from "@heroicons/react/solid";
 import { XIcon } from "@heroicons/react/solid";
 import { HeartIcon } from "@heroicons/react/outline";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-
+import { Link } from "react-router-dom";
 function SmallNav() {
   const [open, setOpen] = useState(false);
+  const close = useRef(null);
 
   const handleClick = () => {
-    if (open === true) {
-      setOpen(false);
-    } else {
-      setOpen(true);
-    }
+    open ? setOpen(false) : setOpen(true);
   };
+
   return (
     <div className="p-4 max-w-[425px] md:hidden relative text-sm">
       {open === true ? (
@@ -47,29 +45,21 @@ function SmallNav() {
 
           <nav className="w-full h-48">
             <ul className="flex flex-col justify-between w-full h-full ">
-              <li className="hover:text-orange-500 flex">
-                Accueil{" "}
-                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              <li className="hover:text-orange-500 flex" ref={close}>
+                <Link to="/">Accueil</Link>
               </li>
-              <li className="hover:text-orange-500 flex">
-                Boutique{" "}
-                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+              <li
+                className="hover:text-orange-500 flex"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <Link to="/boutique">Boutique</Link>
               </li>
-              <li className="hover:text-orange-500 flex">
-                Collections{" "}
-                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
-              </li>
-              <li className="hover:text-orange-500 flex">
-                Blog <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
-              </li>
-              <li className="hover:text-orange-500 flex">
-                Pages{" "}
-                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
-              </li>
-              <li className="hover:text-orange-500 flex">
-                Element{" "}
-                <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
-              </li>
+              <li className="hover:text-orange-500 flex">Collections </li>
+              <li className="hover:text-orange-500 flex">Blog</li>
+              <li className="hover:text-orange-500 flex">Pages </li>
+              <li className="hover:text-orange-500 flex">Element </li>
             </ul>
           </nav>
         </div>

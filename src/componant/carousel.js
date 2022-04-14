@@ -34,7 +34,7 @@ function Carousel() {
 
   return (
     <div className="relative w-full lg:h-screen bg-slate-900">
-      <div className="flex z-30 absolute lg:bottom-30  bottom-10 right-5 w-auto justify-between">
+      <div className="flex z-20 absolute lg:bottom-30  bottom-10 right-5 w-auto justify-between">
         <ChevronLeftIcon
           className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500"
           onClick={() => previousSlide()}
