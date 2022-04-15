@@ -7,27 +7,33 @@ import { connect } from "react-redux";
 import { loadData } from "../action/apiData/apiDataAction";
 import ProductTemplate from "./defaultPrint/productTemplate";
 import { getAll } from "./Api/fonction";
+
 function Boutique(props) {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [pagination, setPagination] = useState(4);
-
+  // Slice the array
   const slice = selectedProducts.slice(0, pagination);
+  // Open Modal Handler
   const handleOpen = () => {
     open ? setOpen(false) : setOpen(true);
   };
+  // Open Modal Handler
   const handleOpen1 = () => {
     open1 ? setOpen1(false) : setOpen1(true);
   };
+  // Add 4 to the Array
   const loadMore = () => {
     setPagination(pagination + pagination);
   };
+  // By default products take all of them
   useEffect(() => {
     getAll().then((res) => {
       return setSelectedProducts(res);
     });
   }, []);
+  // If user select a category set Product to the category
   useEffect(() => {
     setSelectedProducts(props.article.article);
     setPagination(4);
@@ -56,10 +62,10 @@ function Boutique(props) {
           Voir catégorie
         </h2>
         {open && <CategoryList />}
-        {/* Filter  */}
         <div className="hidden md:block mb-5">
           <CategoryList />
         </div>
+        {/* Filter  */}
         <h2
           onClick={() => {
             handleOpen1(open1);
@@ -96,6 +102,7 @@ function Boutique(props) {
                   title={products.title}
                   price={products.price}
                   count={products.rating.count}
+                  category={products.category}
                 />
               );
             })}

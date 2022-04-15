@@ -39,6 +39,7 @@ function Trending() {
               title={tre.title}
               price={tre.price}
               count={tre.rating.count}
+              category={tre.category}
             />
           );
         })}

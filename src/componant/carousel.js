@@ -19,12 +19,16 @@ function Carousel() {
       image: Shopping,
     },
   ];
+// slider start at 0 
   const [current, setCurrent] = useState(0);
   let slides = SliderData;
+  // Take the length of the array
   const length = slides.length;
+  // handle next slide 
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
+  // handle previous flag 
   const previousSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
@@ -68,7 +72,9 @@ function Carousel() {
                   {slide.text}
                 </p>
                 <p className=" text-gray-100">{slide.description}</p>
-                <p className=" text-orange-500 cursor-pointer border-b border-orange-500 w-fit hover:text-white">{slide.shop} </p>
+                <p className=" text-orange-500 cursor-pointer border-b border-orange-500 w-fit hover:text-white">
+                  {slide.shop}{" "}
+                </p>
               </div>
             )}
           </div>

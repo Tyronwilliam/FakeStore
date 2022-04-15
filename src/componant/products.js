@@ -14,7 +14,6 @@ function Products() {
       });
   }, []);
 
-  // console.log(products[0]?.stars, "mon tableau");
   return (
     <div className="max-w-[950px] flex flex-wrap h-auto px-3 lg:flex-row lg:flex-wrap  justify-around mx-auto lg:px-0">
       {products?.map((produit, index) => {
@@ -26,6 +25,7 @@ function Products() {
             title={produit.title}
             price={produit.price}
             count={produit.rating.count}
+            category={produit.category}
           />
         );
       })}

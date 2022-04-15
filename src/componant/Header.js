@@ -56,7 +56,7 @@ function Header() {
           </div>
           {/* Currency */}
           <div className="border-r-2 md:w-20 hidden md:inline-block cursor-pointer">
-            <p>EUR</p>
+            <p>€ EUR</p>
           </div>
           {/* Track Order */}
           <div className="border-r-2 md:w-48">
@@ -76,9 +76,11 @@ function Header() {
           </div>
         </div>
         {open && (
+          // Modal for login and registration
           <div>
             <div className="w-full bg-white h-screen z-50 absolute px-5 pt-20 flex flex-col items-center   left-0 top-0 border-b-2 border-gray-200 ">
               <div className="flex mb-5">
+                {/* Onclick set login is login or register is register  */}
                 <p
                   className={
                     registration === "login"
@@ -104,6 +106,7 @@ function Header() {
                   S'ENREGISTRER
                 </p>
               </div>
+              {/* Condition for login or register on the page */}
               {registration === "login" ? (
                 <div>
                   <p className="text-sm mb-10 xl:text-lg">
@@ -129,6 +132,7 @@ function Header() {
                   </form>
                 </div>
               ) : (
+                // Login
                 <div>
                   <p className="text-sm mb-10 xl:text-lg">
                     Bienvenue, veuillez entrer votre email et votre mot de passe
@@ -160,6 +164,7 @@ function Header() {
                 </div>
               )}
             </div>
+            {/* close the modal */}
             <XIcon
               className="w-6 h-6 text-orange-500 z-50 absolute left-10 top-50 cursor-pointer"
               onClick={() => {
@@ -169,8 +174,9 @@ function Header() {
           </div>
         )}
       </header>
+      {/* Nav for smallScreen */}
       <SmallNav />
-
+      {/* Nav for BigScreen */}
       <BigNav />
     </div>
   );

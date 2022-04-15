@@ -26,3 +26,11 @@
   display: inline-block;
   transition: all 1s ease-out linear;
 }
+@layer utilities {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+
+    margin: 0;
+  }
+}

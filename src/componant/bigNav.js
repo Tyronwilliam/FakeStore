@@ -4,6 +4,7 @@ import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import HomeModal from "./modal/homeModal";
+import { Link } from "react-router-dom";
 
 function BigNav() {
   const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ function BigNav() {
     <div className="hidden md:flex justify-between px-4 pt-6 mb-8 md:text-[15px]">
       {/* Logo */}
       <h1 className="cursor-pointer font-bold md:hidden lg:block lg:text-lg">
-        TheFakeStore.
+        <Link to="/"> TheFakeStore.</Link>
       </h1>
       {/* Nav */}
       <div className="flex justify-between lg:w-[700px] md:w-full ">
@@ -71,9 +72,9 @@ function BigNav() {
         </nav>
         {/* Basket Whislist */}
         <div className="flex justify-between w-24">
-          <SearchIcon className="w-6 h-6 cursor-pointer" />
-          <HeartIcon className="w-6 h-6 cursor-pointer" />
-          <ShoppingBagIcon className="w-6 h-6 cursor-pointer" />
+          <SearchIcon className="w-6 h-6 cursor-pointer text-gray-800" />
+          <HeartIcon className="w-6 h-6 cursor-pointer text-gray-800" />
+          <ShoppingBagIcon className="w-6 h-6 cursor-pointer text-gray-800" />
         </div>
       </div>
       {/* SearchBar */}
