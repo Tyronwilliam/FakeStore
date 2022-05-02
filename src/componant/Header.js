@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Facebook from "../asset/facebook.png";
 import Instagram from "../asset/instagram.png";
 import Twitter from "../asset/twitter.png";
-import France from "../asset/france.png";
+import England from "../asset/england.png";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { XIcon } from "@heroicons/react/outline";
 import BigNav from "./bigNav";
@@ -27,50 +27,51 @@ function Header() {
         </div>
         {/* Right Section */}
 
-        <div className=" flex text-center items-center justify-center w-full lg:w-[650px]">
+        <div className=" flex text-center items-center justify-center w-full lg:w-[650px] text-sm">
           {/* Social Media */}
-          <div className=" border-r-2 hidden md:inline-block">
+          <div className=" border-r-2 hidden md:flex justify-center items-center  h-7">
             <div className="flex justify-between items-center md:w-28 mr-5">
               <img
                 src={Facebook}
                 alt="Logo social media"
-                className="w-6 h-6 cursor-pointer"
+                className="w-5 h-5 cursor-pointer"
               />
               <img
                 src={Instagram}
                 alt="Logo social media"
-                className="w-6 h-6 cursor-pointer"
+                className="w-5 h-5 cursor-pointer"
               />
               <img
                 src={Twitter}
                 alt="Logo social media"
-                className="w-6 h-6 cursor-pointer"
+                className="w-5 h-5 cursor-pointer"
               />
             </div>
           </div>
           {/* Language */}
-          <div className="flex border-r-2 md:w-24 items-center ml-3 justify-center">
-            <img src={France} alt="Logo Country" className="w-6 h-6" />
-            <p className="ml-2 cursor-pointer">FR</p>
-            <ChevronDownIcon className="w-6 h-6 mr-2 cursor-pointer" />
+          <div className="flex border-r-2 md:w-24 items-center ml-3 justify-center text-sm h-7 ">
+            <img src={England} alt="Logo Country" className="w-6 h-6" />
+            <p className="ml-2 cursor-pointer">EN</p>
+            <ChevronDownIcon className="w-4 h-4 mr-2 cursor-pointer text-gray-800" />
           </div>
           {/* Currency */}
-          <div className="border-r-2 md:w-20 hidden md:inline-block cursor-pointer">
-            <p>€ EUR</p>
+          <div className="border-r-2 md:w-20 hidden cursor-pointer  h-7 md:flex justify-center items-center">
+            <p>USD</p>
+            <ChevronDownIcon className="w-4 h-4  text-gray-800" />
           </div>
           {/* Track Order */}
-          <div className="border-r-2 md:w-48">
-            <p className="mx-3 cursor-pointer">Suivre ma commande</p>
+          <div className="border-r-2 text-sm  h-7 flex justify-center items-center">
+            <p className="mx-3 cursor-pointer">Track My Order</p>
           </div>
           {/* Account  */}
-          <div className=" ml-5 md:w-24">
+          <div className=" ml-3 md:w-24 text-sm">
             <div className="text-center w-full cursor-pointer">
               <p
                 onClick={() => {
                   handleClick();
                 }}
               >
-                Mon compte
+                My Account
               </p>
             </div>
           </div>

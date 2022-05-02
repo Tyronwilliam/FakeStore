@@ -20,15 +20,15 @@ function ModalProduct(props) {
         {/* Stars - Review */}
         <div className="flex text-sm text-gray-500 mb-3 items-center">
           {props.stars}
-          <p>({props.count} avis)</p>
+          <p>({props.count} reviews)</p>
         </div>
         {/* Price */}
         <p className="text-orange-500 font-semibold text-lg mb-3 ">
-          {props.price}€
+          {props.price}$
         </p>
         {/* Avaible in stock */}
         <div className="flex mb-4">
-          <p>Disponible : </p>
+          <p>Available : </p>
           <p className="text-green-500 ml-1"> In stock</p>
         </div>
         {/* Color */}

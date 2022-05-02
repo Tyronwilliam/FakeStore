@@ -44,14 +44,16 @@ function Trending() {
           );
         })}
       </div>
-      <button
-        className="p-3 border border-gray-400 rounded-sm mx-auto block mt-5 font-semibold active:bg-black active:text-white hover:bg-black hover:text-white"
-        onClick={() => {
-          loadMore();
-        }}
-      >
-        LOAD MORE
-      </button>
+      {pagination <= 8 ? (
+        <button
+          className="p-3 border border-gray-400 rounded-sm mx-auto block mt-5 font-semibold active:bg-black active:text-white hover:bg-black hover:text-white"
+          onClick={() => {
+            loadMore();
+          }}
+        >
+          LOAD MORE
+        </button>
+      ) : null}
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductTemplate from "./defaultPrint/productTemplate";
+
 function Products() {
   const [products, setProducts] = useState([]);
+
   useEffect(() => {
     axios
       .get("https://fakestoreapi.com/products?limit=5")
@@ -12,6 +14,7 @@ function Products() {
       .catch((err) => {
         return err;
       });
+    console.log(products, "mine");
   }, []);
 
   return (
