@@ -13,6 +13,7 @@ function Boutique(props) {
   const [open1, setOpen1] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [pagination, setPagination] = useState(4);
+  let filter = useRef(null);
   // Slice the array
   const slice = selectedProducts.slice(0, pagination);
   // Open Modal Handler
@@ -38,8 +39,13 @@ function Boutique(props) {
     setSelectedProducts(props.article.article);
     setPagination(4);
   }, [props.article.article]);
+  // ONclick filter re-render for order lowest to high or high to low
+  useEffect(() => {
+    console.log(props.article.article);
+    setSelectedProducts(props.article.article);
+  }, [filter]);
   return (
-    <div className="">
+    <div>
       {/* Banner Boutique on Top  */}
       <div className="w-full h-80 relative">
         <img
@@ -76,7 +82,7 @@ function Boutique(props) {
         </h2>
         {open1 && <FiltreList />}
         <div className="hidden md:block mb-5">
-          <FiltreList />
+          <FiltreList ref={filter} />
         </div>
         {/* Number of Products */}
         <div className="md:flex mb-5">

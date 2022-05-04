@@ -19,16 +19,16 @@ function Carousel() {
       image: Shopping,
     },
   ];
-// slider start at 0 
+  // slider start at 0
   const [current, setCurrent] = useState(0);
   let slides = SliderData;
   // Take the length of the array
   const length = slides.length;
-  // handle next slide 
+  // handle next slide
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
-  // handle previous flag 
+  // handle previous flag
   const previousSlide = () => {
     setCurrent(current === 0 ? length - 1 : current - 1);
   };
@@ -40,11 +40,11 @@ function Carousel() {
     <div className="relative w-full lg:h-screen bg-slate-900">
       <div className="flex z-20 absolute lg:bottom-30  bottom-10 right-5 w-auto justify-between">
         <ChevronLeftIcon
-          className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500"
+          className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500 cursor-pointer"
           onClick={() => previousSlide()}
         />
         <ChevronRightIcon
-          className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500"
+          className="lg:h-14 lg:w-14 w-6 h-6 text-black active:text-orange-500 cursor-pointer"
           onClick={() => nextSlide()}
         />
       </div>

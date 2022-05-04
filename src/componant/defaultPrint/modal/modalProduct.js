@@ -4,7 +4,6 @@ import Facebook from "../../../asset/facebook.png";
 import Instagram from "../../../asset/instagram.png";
 import Twitter from "../../../asset/twitter.png";
 function ModalProduct(props) {
-  const [open, setOpen] = useState(true);
   const [color, setColor] = useState(false);
 
   return (
@@ -43,23 +42,25 @@ function ModalProduct(props) {
           </div>
         </div>
         {/* Size */}
-        <div className="flex mb-2">
-          <p>size :</p>
-          <div className="flex justify-between w-32 ml-3  text-gray-500 text-sm">
-            <div className="w-6 h-6 border flex items-center justify-center cursor-pointer  ">
-              <p>S</p>
-            </div>
-            <div className="w-6 h-6 border flex items-center justify-center cursor-pointer ">
-              <p>M</p>
-            </div>
-            <div className="w-6 h-6 border flex items-center justify-center cursor-pointer ">
-              <p>L</p>
-            </div>
-            <div className="w-6 h-6 border flex items-center justify-center cursor-pointer ">
-              <p>XL</p>
+        {props.category === "women's clothing" || props.category === "men's clothing" ? (
+          <div className="flex mb-2">
+            <p>size :</p>
+            <div className="flex justify-between w-32 ml-3  text-gray-500 text-sm">
+              <div className="w-6 h-6 border flex items-center justify-center cursor-pointer  ">
+                <p>S</p>
+              </div>
+              <div className="w-6 h-6 border flex items-center justify-center cursor-pointer ">
+                <p>M</p>
+              </div>
+              <div className="w-6 h-6 border flex items-center justify-center cursor-pointer ">
+                <p>L</p>
+              </div>
+              <div className="w-6 h-6 border flex items-center justify-center cursor-pointer ">
+                <p>XL</p>
+              </div>
             </div>
           </div>
-        </div>
+        ) : null}
         {/* Quantity and add to cart add to like */}
         <div className="flex items-center pb-3 mb-5 border-b">
           <p>qty : </p>
