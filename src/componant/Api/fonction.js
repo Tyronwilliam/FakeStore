@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 export async function getAll() {
   try {
     const res = await axios.get("https://fakestoreapi.com/products");
@@ -53,3 +54,4 @@ export function getWomen() {
       return err;
     });
 }
+

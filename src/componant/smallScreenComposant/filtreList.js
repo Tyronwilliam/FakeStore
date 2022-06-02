@@ -1,36 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { loadData } from "../../action/apiData/apiDataAction";
+import { getAll } from "../Api/fonction";
 function FiltreList(props) {
-  let arrayOfNumber = [];
   const [array, setArray] = useState([]);
+  // useEffect(() => {
+  //   getAll().then((res) => {
+  //     return setArray(res);
+  //   });
+  //   console.log(array, "so? ");
+  // }, []);
   useEffect(() => {
-    setArray(props.article.article);
+
+      setArray(props.article.article);
+      console.log(props.article.article, "working ? ");
   }, [props.article]);
   const sortByLowtoHigh = () => {
-    array.map((prix) => {
-      arrayOfNumber.push(prix.price);
-
-      arrayOfNumber.sort((a, b) => a - b);
-      return loadData(arrayOfNumber);
-    });
+    array.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+    console.log(array, "work ? less ");
+    return props.loadData(array);
   };
   const sortByHightoLow = () => {
-    array.map((prix) => {
-      arrayOfNumber.push(prix.price);
-
-      arrayOfNumber.sort((a, b) => b - a);
-      return loadData(arrayOfNumber);
-    });
+    array.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+    console.log(array, "work ? ");
+    return props.loadData(array);
   };
-  useEffect(()=>{
 
-  }, [])
   return (
     <div>
       <ul className="md:flex">
         <li
-          className="cursor-pointer"
+          className="cursor-pointer hover:text-orange-500"
           onClick={() => {
             sortByLowtoHigh();
           }}
@@ -38,7 +38,7 @@ function FiltreList(props) {
           Prix : - au + cher
         </li>
         <li
-          className="md:ml-10 mb-5 md:mb-0 cursor-pointer"
+          className="md:ml-10 mb-5 md:mb-0 cursor-pointer hover:text-orange-500"
           onClick={() => {
             sortByHightoLow();
           }}

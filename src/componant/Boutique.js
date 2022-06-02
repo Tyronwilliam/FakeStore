@@ -7,15 +7,14 @@ import { connect } from "react-redux";
 import { loadData } from "../action/apiData/apiDataAction";
 import ProductTemplate from "./defaultPrint/productTemplate";
 import { getAll } from "./Api/fonction";
-
 function Boutique(props) {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [pagination, setPagination] = useState(4);
-  let filter = useRef(null);
+  const [slice, setSlice] = useState(selectedProducts.slice(0, pagination));
   // Slice the array
-  const slice = selectedProducts.slice(0, pagination);
+
   // Open Modal Handler
   const handleOpen = () => {
     open ? setOpen(false) : setOpen(true);
@@ -31,19 +30,17 @@ function Boutique(props) {
   // By default products take all of them
   useEffect(() => {
     getAll().then((res) => {
+      props.loadData(res);
       return setSelectedProducts(res);
     });
   }, []);
   // If user select a category set Product to the category
   useEffect(() => {
     setSelectedProducts(props.article.article);
+    console.log(props.article.article, "my article that change ? ");
     setPagination(4);
-  }, [props.article.article]);
-  // ONclick filter re-render for order lowest to high or high to low
-  useEffect(() => {
-    console.log(props.article.article);
-    setSelectedProducts(props.article.article);
-  }, [filter]);
+  }, [props.article]);
+
   return (
     <div>
       {/* Banner Boutique on Top  */}
@@ -82,7 +79,7 @@ function Boutique(props) {
         </h2>
         {open1 && <FiltreList />}
         <div className="hidden md:block mb-5">
-          <FiltreList ref={filter} />
+          <FiltreList />
         </div>
         {/* Number of Products */}
         <div className="md:flex mb-5">
@@ -99,19 +96,18 @@ function Boutique(props) {
         </div>
         {/* Products */}
         <div className="flex flex-wrap md:gap-7 justify-center">
-          {slice &&
-            slice?.map((products) => {
-              return (
-                <ProductTemplate
-                  key={products.id}
-                  image={products.image}
-                  title={products.title}
-                  price={products.price}
-                  count={products.rating.count}
-                  category={products.category}
-                />
-              );
-            })}
+          {selectedProducts.slice(0, pagination)?.map((products) => {
+            return (
+              <ProductTemplate
+                key={products.id}
+                image={products.image}
+                title={products.title}
+                price={products.price}
+                count={products.rating.count}
+                category={products.category}
+              />
+            );
+          })}
         </div>
         <button
           className="p-3 border border-gray-400 rounded-sm mx-auto block mt-5 font-semibold active:bg-black active:text-white hover:bg-black hover:text-white"

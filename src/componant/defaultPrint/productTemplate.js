@@ -19,7 +19,7 @@ function ProductTemplate(props) {
 
     return stars;
   };
-  randomStar();
+
   return (
     <div
     //   className=" lg:w-[400px] md:w-[350px] w-[300px] h-[500px] flex flex-col justify-around border-2 p-5 mb-5 rounded-md mx-auto
@@ -38,7 +38,7 @@ function ProductTemplate(props) {
         <p className="font-semibold">{props.title}</p>
         <p className="text-orange-500 font-semibold text-lg">{props.price} $</p>
         <div className="flex items-center">
-          {stars}
+          {randomStar()}
           <p>({props.count} reviews)</p>
         </div>
       </div>
@@ -69,5 +69,4 @@ function ProductTemplate(props) {
     </div>
   );
 }
-
 export default ProductTemplate;
