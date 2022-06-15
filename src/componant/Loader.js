@@ -10,7 +10,7 @@ function Loader() {
           </h1>
         </div>
         <div className="flex justify-center items-center mt-5">
-          <div className="w-[500px] rounded-full h-[10px] bg-gray-400">
+          <div className="w-[300px] md:w-[500px] rounded-full h-[10px] bg-gray-400">
             <div className="h-[10px] bg-orange-500 rounded-full progress-bar"></div>
           </div>
         </div>

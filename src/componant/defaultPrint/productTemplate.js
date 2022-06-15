@@ -43,14 +43,16 @@ function ProductTemplate(props) {
         </div>
       </div>
       {open && (
-        <div className="w-full h-[100%] fixed top-0 left-0 z-50">
+        <div className={`w-full h-[100%] fixed top-0 left-0 z-50   `}>
+          {/* Background grey */}
           <div
-            className="w-full h-[100%] bg-gray-500 opacity-90 relative "
+            className={`w-full h-[100%] bg-gray-500  relative opacity-90 `}
             onClick={() => {
               setOpen(false);
             }}
           ></div>
           <ModalProduct
+  
             image={props.image}
             title={props.title}
             stars={props.starModal}

@@ -13,7 +13,6 @@ function Trending() {
     axios
       .get("https://fakestoreapi.com/products?limit=8&sort=desc")
       .then((res) => {
-        console.log(res.data, "je viens de trending");
         setTrend(res.data);
       })
       .catch((err) => {

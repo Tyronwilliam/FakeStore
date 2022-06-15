@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Man from "../asset/manglasses.jpg";
 import { XCircleIcon } from "@heroicons/react/outline";
 import CategoryList from "./smallScreenComposant/categoryList";
@@ -12,8 +12,6 @@ function Boutique(props) {
   const [open1, setOpen1] = useState(false);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [pagination, setPagination] = useState(4);
-  const [slice, setSlice] = useState(selectedProducts.slice(0, pagination));
-  // Slice the array
 
   // Open Modal Handler
   const handleOpen = () => {
@@ -37,20 +35,19 @@ function Boutique(props) {
   // If user select a category set Product to the category
   useEffect(() => {
     setSelectedProducts(props.article.article);
-    console.log(props.article.article, "my article that change ? ");
     setPagination(4);
   }, [props.article]);
 
   return (
     <div>
       {/* Banner Boutique on Top  */}
-      <div className="w-full h-80 relative">
+      <div className="w-full h-80 relative z-20">
         <img
           src={Man}
           alt="Man with glasses"
           className="w-full h-full object-cover"
         />
-        <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 md:text-lg lg:text-xl">
+        <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 md:text-lg lg:text-xl z-20">
           Boutique Standard
         </h1>
       </div>
@@ -89,7 +86,7 @@ function Boutique(props) {
             </p>
             <p className="ml-1 font-semibold">produits trouvés |</p>
           </div>
-          <div className="flex items-center  md:ml-1 text-orange-500">
+          <div className="flex items-center  md:ml-1 text-orange-500 cursor-pointer hover:border-b hover:border-orange-500">
             <XCircleIcon className="w-4 h-4" />
             <p>Supprimer les filtres</p>
           </div>

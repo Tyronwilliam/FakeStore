@@ -5,11 +5,12 @@ module.exports = {
       transitionProperty: {
         width: "width",
       },
+
+      fontFamily: {
+        sans: ["Roboto", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+      },
     },
-    fontFamily: {
-      sans: ["Roboto", "sans-serif"],
-      montserrat: ["Montserrat", "sans-serif"],
-    },
+    plugins: [],
   },
-  plugins: [],
 };

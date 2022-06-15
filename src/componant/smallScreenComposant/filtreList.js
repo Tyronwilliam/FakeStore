@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { loadData } from "../../action/apiData/apiDataAction";
-import { getAll } from "../Api/fonction";
 function FiltreList(props) {
   const [array, setArray] = useState([]);
   // useEffect(() => {
@@ -11,18 +10,17 @@ function FiltreList(props) {
   //   console.log(array, "so? ");
   // }, []);
   useEffect(() => {
-
-      setArray(props.article.article);
-      console.log(props.article.article, "working ? ");
+    setArray(props.article.article);
   }, [props.article]);
+  // Trier article du moins au plus
   const sortByLowtoHigh = () => {
     array.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-    console.log(array, "work ? less ");
     return props.loadData(array);
   };
+  // Trier article du plus au moins
+
   const sortByHightoLow = () => {
     array.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-    console.log(array, "work ? ");
     return props.loadData(array);
   };
 

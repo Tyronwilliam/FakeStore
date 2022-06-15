@@ -14,7 +14,6 @@ function Products() {
       .catch((err) => {
         return err;
       });
-    console.log(products, "mine");
   }, []);
 
   return (

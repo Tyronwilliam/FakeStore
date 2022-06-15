@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HeartIcon } from "@heroicons/react/outline";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
 import { SearchIcon } from "@heroicons/react/outline";
-// import { ChevronDownIcon } from "@heroicons/react/solid";
 import { Link } from "react-router-dom";
-
+import WishList from "./defaultPrint/modal/rightModal";
+import Basket from "./defaultPrint/modal/rightModal";
 function BigNav() {
+  const [show, setShow] = useState(false);
+  const [showBasket, setShowBasket] = useState(false);
+  const handle = () => {
+    setShow(!show);
+  };
+  const handleBasket = () => {
+    setShowBasket(!showBasket);
+  };
+  useEffect(() => {}, [show]);
   return (
-    <div className="hidden md:flex justify-between items-center px-4 pt-6 mb-8 md:text-[15px]">
+    <div className="hidden md:flex justify-between items-center px-4 pt-6 mb-8 md:text-[15px] relative">
       {/* Logo */}
       <h1 className="cursor-pointer font-bold md:hidden lg:block lg:text-lg">
         <Link to="/"> TheFakeStore.</Link>
@@ -39,13 +48,39 @@ function BigNav() {
           </ul>
         </nav>
       </div>
-      {/* Basket Whislist */}
+      {/* Basket Whislist SearchBar*/}
       <div className="flex justify-between w-24">
         <SearchIcon className="w-5 h-5 cursor-pointer text-gray-800" />
-        <HeartIcon className="w-5 h-5 cursor-pointer text-gray-800" />
-        <ShoppingBagIcon className="w-5 h-5 cursor-pointer text-gray-800" />
+        <HeartIcon
+          className="w-5 h-5 cursor-pointer text-gray-800"
+          onClick={() => {
+            setShow(!show);
+          }}
+        />
+        <ShoppingBagIcon
+          className="w-5 h-5 cursor-pointer text-gray-800"
+          onClick={() => {
+            setShowBasket(!showBasket);
+          }}
+        />
       </div>
-      {/* SearchBar */}
+      {/* Whislist */}
+
+      <WishList
+        handle={handle}
+        className={`top-0 right-0 w-[35vw] border-l-2 bg-white  p-10 pl-20  fixed h-full z-50 ease-in-out duration-300 ${
+          show ? "translate-x-0 " : "translate-x-full"
+        }`}
+        content="COUP DE COEUR"
+      />
+      {/* Basket  */}
+      <Basket
+        handle={handleBasket}
+        className={`top-0 right-0 w-[35vw] border-l-2 bg-white  p-10 pl-20  fixed h-full z-50 ease-in-out duration-300 ${
+          showBasket ? "translate-x-0 " : "translate-x-full"
+        }`}
+        content="PANIER"
+      />
       {/* <div className="">
         <input type="text" placeholder="Recherchez" className="" />
       </div> */}
