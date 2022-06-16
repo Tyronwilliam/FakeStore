@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { addToWish } from "../../../action/wishlist/addToWishlistAction";
+import { deleteToWish } from "../../../action/wishlist/addToWishlistAction";
+import { TrashIcon } from "@heroicons/react/outline";
+
 import { XCircleIcon } from "@heroicons/react/outline";
+import NavProductTemplate from "./navProductTemplate";
 
 function RightModal(props) {
+  const [wish, setWish] = useState([]);
+
+  useEffect(() => {
+    setWish(props.product.product);
+    console.log(wish);
+  }, [props.product]);
   return (
     <div className={props.className}>
       <div className="flex justify-between items-center">
@@ -13,8 +25,32 @@ function RightModal(props) {
           }}
         />
       </div>
+      {props.content === "COUP DE COEUR" && (
+        <>
+          {wish?.map((produit, index) => {
+            return (
+              <NavProductTemplate
+                key={index}
+                image={produit.image}
+                title={produit.title}
+                price={produit.price}
+                count={produit.count}
+                id={produit.id}
+              />
+            );
+          })}
+        </>
+      )}
     </div>
   );
 }
-
-export default RightModal;
+const mapStateToProps = (store) => {
+  return {
+    product: store.product,
+  };
+};
+const mapDispatchToProps = {
+  addToWish,
+  deleteToWish,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(RightModal);

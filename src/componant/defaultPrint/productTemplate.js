@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import ModalProduct from "./modal/modalProduct";
+import React, { useState } from "react";
 import { XCircleIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 
 function ProductTemplate(props) {
   const stars = [];
   const star = <StarIcon className="w-6 h-6 text-orange-500" />;
-  const starModal = <StarIcon className="w-3 h-3 text-orange-500" />;
+  // const starModal = <StarIcon className="w-3 h-3 text-orange-500" />;
   const [open, setOpen] = useState(false);
 
   const randomStar = () => {
@@ -21,10 +20,7 @@ function ProductTemplate(props) {
   };
 
   return (
-    <div
-    //   className=" lg:w-[400px] md:w-[350px] w-[300px] h-[500px] flex flex-col justify-around border-2 p-5 mb-5 rounded-md mx-auto
-    // lg:mx-0  shrink-0 cursor-pointer  "
-    >
+    <div>
       <div
         className=" lg:w-[400px] md:w-[350px] w-[300px] md:h-[500px] h-[420px]  flex flex-col justify-between md:justify-around border-2 p-5 mb-5 rounded-md mx-auto
     lg:mx-0  shrink-0 cursor-pointer  "
@@ -32,11 +28,15 @@ function ProductTemplate(props) {
           setOpen(true);
         }}
       >
+        {/* Image */}
         <div className="md:w-[200px] lg:w-[250px] w-[150px] h-[200px] md:h-80 mx-auto">
           <img src={props.image} alt="" className="w-full h-full" />
         </div>
+        {/* Title  */}
         <p className="font-semibold">{props.title}</p>
+        {/* Price */}
         <p className="text-orange-500 font-semibold text-lg">{props.price} $</p>
+        {/* Star rate */}
         <div className="flex items-center">
           {randomStar()}
           <p>({props.count} reviews)</p>
@@ -51,15 +51,9 @@ function ProductTemplate(props) {
               setOpen(false);
             }}
           ></div>
-          <ModalProduct
-  
-            image={props.image}
-            title={props.title}
-            stars={props.starModal}
-            category={props.category}
-            price={props.price}
-            count={props.count}
-          />
+          {/* Modal Products */}
+          {props.children}
+          {/* Icone to close Modal */}
           <XCircleIcon
             className="w-8 h-8 absolute top-2 right-2 text-orange-500 cursor-pointer"
             onClick={() => {
@@ -71,4 +65,5 @@ function ProductTemplate(props) {
     </div>
   );
 }
+
 export default ProductTemplate;

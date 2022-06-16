@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
+import { addToWish } from "../../../action/wishlist/addToWishlistAction";
 import { HeartIcon } from "@heroicons/react/outline";
 import Facebook from "../../../asset/facebook.png";
 import Instagram from "../../../asset/instagram.png";
 import Twitter from "../../../asset/twitter.png";
-function ModalProduct(props) {
-  const [color, setColor] = useState(false);
 
+function ModalProduct(props) {
+  // const exist = localStorage.getItem("wish") || "[]";
+  const [color, setColor] = useState(false);
+  const [myWish, setMyWish] = useState([]);
+
+  useEffect(() => {}, [myWish]);
   return (
     <div className="w-[300px] bg-white h-[400px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto md:w-[700px] md:flex   ">
       {/* Image */}
@@ -42,7 +48,8 @@ function ModalProduct(props) {
           </div>
         </div>
         {/* Size */}
-        {props.category === "women's clothing" || props.category === "men's clothing" ? (
+        {props.category === "women's clothing" ||
+        props.category === "men's clothing" ? (
           <div className="flex mb-2">
             <p>size :</p>
             <div className="flex justify-between w-32 ml-3  text-gray-500 text-sm">
@@ -68,6 +75,7 @@ function ModalProduct(props) {
           <button className="ml-3 bg-orange-500 text-white text-xs p-2">
             Ajouter au panier
           </button>
+          {/* Coup de coeur  */}
           <HeartIcon
             className={
               color
@@ -75,6 +83,7 @@ function ModalProduct(props) {
                 : "w-4 h-4 cursor-pointer text-gray-500 ml-5"
             }
             onClick={() => {
+              props.addToWish(props.produit);
               setColor(true);
             }}
           />
@@ -109,5 +118,13 @@ function ModalProduct(props) {
     </div>
   );
 }
+const mapStateToProps = (store) => {
+  return {
+    product: store.product,
+  };
+};
+const mapDispatchToProps = {
+  addToWish,
+};
 
-export default ModalProduct;
+export default connect(mapStateToProps, mapDispatchToProps)(ModalProduct);

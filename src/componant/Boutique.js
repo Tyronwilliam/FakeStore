@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { loadData } from "../action/apiData/apiDataAction";
 import ProductTemplate from "./defaultPrint/productTemplate";
 import { getAll } from "./Api/fonction";
+import ModalProduct from "./defaultPrint/modal/modalProduct";
 function Boutique(props) {
   const [open, setOpen] = useState(false);
   const [open1, setOpen1] = useState(false);
@@ -37,7 +38,6 @@ function Boutique(props) {
     setSelectedProducts(props.article.article);
     setPagination(4);
   }, [props.article]);
-
   return (
     <div>
       {/* Banner Boutique on Top  */}
@@ -82,7 +82,7 @@ function Boutique(props) {
         <div className="md:flex mb-5">
           <div className="flex">
             <p className="font-semibold text-orange-500">
-              {selectedProducts.length}{" "}
+              {selectedProducts.length}
             </p>
             <p className="ml-1 font-semibold">produits trouvés |</p>
           </div>
@@ -93,7 +93,7 @@ function Boutique(props) {
         </div>
         {/* Products */}
         <div className="flex flex-wrap md:gap-7 justify-center">
-          {selectedProducts.slice(0, pagination)?.map((products) => {
+          {selectedProducts?.slice(0, pagination)?.map((products, index) => {
             return (
               <ProductTemplate
                 key={products.id}
@@ -102,7 +102,17 @@ function Boutique(props) {
                 price={products.price}
                 count={products.rating.count}
                 category={products.category}
-              />
+              >
+                <ModalProduct
+                  produit={products}
+                  key={products.id}
+                  image={products.image}
+                  title={products.title}
+                  price={products.price}
+                  count={products.rating.count}
+                  category={products.category}
+                />
+              </ProductTemplate>
             );
           })}
         </div>
