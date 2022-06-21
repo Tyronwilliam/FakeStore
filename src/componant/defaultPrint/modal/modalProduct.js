@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { addToWish } from "../../../action/wishlist/addToWishlistAction";
+import { addToBasket } from "../../../action/basket/basketAction";
 import { HeartIcon } from "@heroicons/react/outline";
 import Facebook from "../../../asset/facebook.png";
 import Instagram from "../../../asset/instagram.png";
 import Twitter from "../../../asset/twitter.png";
 
 function ModalProduct(props) {
-  // const exist = localStorage.getItem("wish") || "[]";
   const [color, setColor] = useState(false);
-  const [myWish, setMyWish] = useState([]);
 
-  useEffect(() => {}, [myWish]);
   return (
     <div className="w-[300px] bg-white h-[400px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto md:w-[700px] md:flex   ">
       {/* Image */}
@@ -72,7 +70,12 @@ function ModalProduct(props) {
         <div className="flex items-center pb-3 mb-5 border-b">
           <p>qty : </p>
           <input type="number" className="border w-10 text-center ml-2" />
-          <button className="ml-3 bg-orange-500 text-white text-xs p-2">
+          <button
+            className="ml-3 bg-orange-500 text-white text-xs p-2"
+            onClick={() => {
+              props.addToBasket(props.produit);
+            }}
+          >
             Ajouter au panier
           </button>
           {/* Coup de coeur  */}
@@ -121,10 +124,12 @@ function ModalProduct(props) {
 const mapStateToProps = (store) => {
   return {
     product: store.product,
+    item: store.item,
   };
 };
 const mapDispatchToProps = {
   addToWish,
+  addToBasket,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalProduct);

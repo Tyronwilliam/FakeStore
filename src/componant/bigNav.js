@@ -68,18 +68,18 @@ function BigNav() {
 
       <WishList
         handle={handle}
-        className={`top-0 right-0 w-[35vw] border-l-2 bg-white  p-10 pl-20  fixed h-full z-50 ease-in-out duration-300 overflow-y-auto ${
+        className={`top-0 right-0 w-[35vw] border-l-2 bg-white px-5 pt-5  fixed h-full z-50 ease-in-out duration-300 overflow-y-auto ${
           show ? "translate-x-0 " : "translate-x-full"
         }`}
-        content="COUP DE COEUR"
+        content="Wishlist"
       />
       {/* Basket  */}
       <Basket
         handle={handleBasket}
-        className={`top-0 right-0 w-[35vw] border-l-2 bg-white  p-10 pl-20  fixed h-full z-50 ease-in-out duration-300 overflow-y-auto ${
+        className={`top-0 right-0 w-[35vw] border-l-2 bg-white  px-5 pt-5 fixed h-full z-50 ease-in-out duration-300 overflow-y-auto ${
           showBasket ? "translate-x-0 " : "translate-x-full"
         }`}
-        content="PANIER"
+        content="Shopping Cart"
       />
       {/* <div className="">
         <input type="text" placeholder="Recherchez" className="" />

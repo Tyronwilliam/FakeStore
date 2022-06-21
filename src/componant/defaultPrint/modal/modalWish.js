@@ -1,16 +1,23 @@
 import React from "react";
 import { TrashIcon } from "@heroicons/react/outline";
 import { connect } from "react-redux";
-import { addToWish } from "../../../action/wishlist/addToWishlistAction";
 import { deleteToWish } from "../../../action/wishlist/addToWishlistAction";
-function NavProductTemplate(props) {
+import { deleteItemBasket } from "../../../action/basket/basketAction";
+function ModalWish(props) {
   return (
     <div
-      className=" lg:w-[400px] md:w-[350px] w-[300px] md:h-[500px] h-[420px]  flex flex-col justify-between md:justify-around border-2 p-5 mb-5 rounded-md mx-auto
-lg:mx-0  shrink-0 cursor-pointer  "
+      className="w-full flex flex-col justify-between md:justify-around border-2 p-5 mb-5 rounded-md mx-auto
+lg:mx-0  cursor-pointer  "
     >
+      {/* Trash Icone */}
+      <TrashIcon
+        className="w-6 h-6 text-orange-500"
+        onClick={() => {
+          props.deleteToWish(props.id);
+        }}
+      />
       {/* Image */}
-      <div className="md:w-[200px] lg:w-[250px] w-[150px] h-[200px] md:h-80 mx-auto">
+      <div className="w-[150px] h-[200px] mx-auto mb-2">
         <img src={props.image} alt="" className="w-full h-full" />
       </div>
       {/* Title  */}
@@ -21,12 +28,6 @@ lg:mx-0  shrink-0 cursor-pointer  "
       <div className="flex items-center">
         <p>({props.count} reviews)</p>
       </div>
-      <TrashIcon
-        onClick={() => {
-          props.deleteToWish(props.id);
-          console.log(props.id);
-        }}
-      />
     </div>
   );
 }
@@ -34,10 +35,11 @@ lg:mx-0  shrink-0 cursor-pointer  "
 const mapStateToProps = (store) => {
   return {
     product: store.product,
+    item: store.item,
   };
 };
 const mapDispatchToProps = {
-  addToWish,
   deleteToWish,
+  deleteItemBasket,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(NavProductTemplate);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalWish);
