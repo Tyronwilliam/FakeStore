@@ -8,7 +8,7 @@ Currently Building an Ecommerce App
 
 Warning: The FakeStore API is free and it can happen that problems occur (error: 524 ), if this happens, come back later.
 
-  To find more details about this project, please check this link : [https://github.com/habx/test-client-front](https://github.com/habx/test-client-front)
+  To find more details about this project, please check this link : [https://fake-store-j9vz6uaxg-tyronwilliam.vercel.app/boutique](https://fake-store-j9vz6uaxg-tyronwilliam.vercel.app/boutique)
 
 
 ### Built With
