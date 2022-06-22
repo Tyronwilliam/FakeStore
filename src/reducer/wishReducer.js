@@ -10,7 +10,7 @@ const WishReducer = (state = initialState, action) => {
     case ADD_TO_WISHLIST:
       const same = state.product?.find((item) => item.id === action.payload.id);
       return same
-        ? { product: [...state.product] }
+        ? [...state.product]
         : { product: [...state.product, action.payload] };
 
     case DELETE_TO_WISHLIST:

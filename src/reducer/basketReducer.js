@@ -11,7 +11,7 @@ const WishReducer = (state = initialState, action) => {
         (items) => items.id === action.payload.id
       );
       return sameItem
-        ? { item: [...state.item] }
+        ? [...state.item]
         : { item: [...state.item, action.payload] };
 
     case DELETE_ITEM_BASKET:

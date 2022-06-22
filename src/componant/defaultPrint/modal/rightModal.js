@@ -9,13 +9,19 @@ import ModalBasket from "./modalBasket";
 function RightModal(props) {
   const [wish, setWish] = useState([]);
   const [basket, setBasket] = useState([]);
+  // Check if we add wish to basket
+  const productExistinBasket = () => {
+    let arrWish = props.product.product;
+    let arrBasket = props.item.item;
+    let difference = arrWish.filter((x) => !arrBasket.includes(x));
+    setWish(difference);
+  };
   useEffect(() => {
     setWish(props.product.product);
   }, [props.product]);
   useEffect(() => {
     setBasket(props.item.item);
-    console.log(basket, "panier state");
-    console.log(props.item.item, "panier redux");
+    productExistinBasket();
   }, [props.item, basket]);
   return (
     <div className={props.className}>
@@ -40,6 +46,7 @@ function RightModal(props) {
                 price={produit.price}
                 count={produit.rating.count}
                 id={produit.id}
+                produits={produit}
               />
             );
           })}

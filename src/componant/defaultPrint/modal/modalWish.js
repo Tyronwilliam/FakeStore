@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { TrashIcon } from "@heroicons/react/outline";
 import { connect } from "react-redux";
 import { deleteToWish } from "../../../action/wishlist/addToWishlistAction";
 import { deleteItemBasket } from "../../../action/basket/basketAction";
+import { addToBasket } from "../../../action/basket/basketAction";
+
 function ModalWish(props) {
   return (
     <div
@@ -25,8 +27,16 @@ lg:mx-0  cursor-pointer  "
       {/* Price */}
       <p className="text-orange-500 font-semibold text-lg">{props.price} $</p>
       {/* Star rate */}
-      <div className="flex items-center">
+      <div className="flex justify-between items-center">
         <p>({props.count} reviews)</p>
+        <p
+          className="text-orange-500 hover:border-b border-orange-500"
+          onClick={() => {
+            props.addToBasket(props.produits);
+          }}
+        >
+          Add to cart
+        </p>
       </div>
     </div>
   );
@@ -41,5 +51,6 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = {
   deleteToWish,
   deleteItemBasket,
+  addToBasket,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ModalWish);
