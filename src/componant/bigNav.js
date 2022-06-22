@@ -89,7 +89,7 @@ function BigNav(props) {
           />
           {/* Round and Number of item in cart */}
           <div className="w-3 h-3 bg-orange-300 absolute top-0 -right-1 rounded-full flex items-center justify-center cursor-pointer">
-            <p className="text-white text-[8px] font-semibold">
+            <p className="text-white text-[8px] font-semibold ">
               {props.item.item.length}
             </p>
           </div>

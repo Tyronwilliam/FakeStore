@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ProductTemplate from "./defaultPrint/productTemplate";
-
+import ModalProduct from "./defaultPrint/modal/modalProduct";
 function Products() {
   const [products, setProducts] = useState([]);
 
@@ -23,12 +23,21 @@ function Products() {
           <ProductTemplate
             key={produit.id}
             image={produit.image}
-            array={products}
             title={produit.title}
             price={produit.price}
             count={produit.rating.count}
             category={produit.category}
-          />
+          >
+            <ModalProduct
+              produit={produit}
+              key={produit.id}
+              image={produit.image}
+              title={produit.title}
+              price={produit.price}
+              count={produit.rating.count}
+              category={produit.category}
+            />
+          </ProductTemplate>
         );
       })}
     </div>

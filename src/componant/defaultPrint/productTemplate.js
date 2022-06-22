@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { XCircleIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
-
+import { connect } from "react-redux";
 function ProductTemplate(props) {
-  const stars = [];
+  let stars = [];
   const star = <StarIcon className="w-6 h-6 text-orange-500" />;
-  // const starModal = <StarIcon className="w-3 h-3 text-orange-500" />;
   const [open, setOpen] = useState(false);
 
   const randomStar = () => {
@@ -14,11 +13,14 @@ function ProductTemplate(props) {
     const numberOfstar = Math.floor(Math.random() * 5) + 1;
     for (let i = 0; i < numberOfstar; i++) {
       stars.push(star);
-    } // retourne un tableau d'objet
-
+    }
+    // retourne un tableau d'objet
     return stars;
   };
-
+  useEffect(() => {
+    randomStar();
+  }, []);
+  console.log(stars);
   return (
     <div>
       <div
@@ -38,7 +40,14 @@ function ProductTemplate(props) {
         <p className="text-orange-500 font-semibold text-lg">{props.price} $</p>
         {/* Star rate */}
         <div className="flex items-center">
-          {randomStar()}
+          {/* {props.stars?.map((etoile) => {
+            return (
+              <div className="bg-black">
+                <li>{etoile}</li>
+              </div>
+            );
+          })} */}
+          <p className="flex">{randomStar()}</p>
           <p>({props.count} reviews)</p>
         </div>
       </div>
@@ -66,4 +75,11 @@ function ProductTemplate(props) {
   );
 }
 
-export default ProductTemplate;
+const mapStateToProps = (store) => {
+  return {
+    article: store.article,
+  };
+};
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductTemplate);

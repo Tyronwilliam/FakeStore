@@ -4,6 +4,7 @@ import { ChevronRightIcon } from "@heroicons/react/outline";
 import Bag from "../asset/bag.jpg";
 import WomenGray from "../asset/longgraycoat.jpg";
 import Shopping from "../asset/shopingWomen.jpg";
+import { Link } from "react-router-dom";
 function Carousel() {
   const SliderData = [
     {
@@ -73,7 +74,7 @@ function Carousel() {
                 </p>
                 <p className=" text-gray-100">{slide.description}</p>
                 <p className=" text-orange-500 cursor-pointer border-b border-orange-500 w-fit hover:text-white">
-                  {slide.shop}{" "}
+                  <Link to="/boutique">{slide.shop} </Link>
                 </p>
               </div>
             )}

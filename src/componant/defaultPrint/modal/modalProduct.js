@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { addToWish } from "../../../action/wishlist/addToWishlistAction";
 import { addToBasket } from "../../../action/basket/basketAction";
@@ -10,6 +10,10 @@ import Twitter from "../../../asset/twitter.png";
 function ModalProduct(props) {
   const [color, setColor] = useState(false);
 
+  useEffect(() => {
+    let arrWish = props.product.product;
+    arrWish.includes(props.produit) ? setColor(true) : setColor(false);
+  }, []);
   return (
     <div className="w-[300px] bg-white h-[400px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto md:w-[700px] md:flex   ">
       {/* Image */}
