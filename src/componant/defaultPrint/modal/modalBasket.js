@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 import { deleteItemBasket } from "../../../action/basket/basketAction";
 function ModalBasket(props) {
   return (
+    
     <div
       className="w-full flex flex-col justify-between md:justify-around border-2 p-5 mb-5 rounded-md mx-auto
-lg:mx-0  cursor-pointer  "
-    >
+      lg:mx-0  cursor-pointer  "
+      >
       {/* Trash Icone */}
       <TrashIcon
         className="w-6 h-6 text-orange-500"

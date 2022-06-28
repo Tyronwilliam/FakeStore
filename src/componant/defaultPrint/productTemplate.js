@@ -20,7 +20,6 @@ function ProductTemplate(props) {
   useEffect(() => {
     randomStar();
   }, []);
-  console.log(stars);
   return (
     <div>
       <div

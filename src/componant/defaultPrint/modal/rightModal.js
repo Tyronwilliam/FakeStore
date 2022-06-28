@@ -5,6 +5,7 @@ import { deleteToWish } from "../../../action/wishlist/addToWishlistAction";
 import { XCircleIcon } from "@heroicons/react/outline";
 import ModalWIsh from "./modalWish";
 import ModalBasket from "./modalBasket";
+import { useNavigate } from "react-router-dom";
 
 function RightModal(props) {
   const [wish, setWish] = useState([]);
@@ -13,9 +14,13 @@ function RightModal(props) {
   const productExistinBasket = () => {
     let arrWish = props.product.product;
     let arrBasket = props.item.item;
-    let difference = arrWish.filter((x) => !arrBasket.includes(x));
-    setWish(difference);
+    let same = arrWish.filter((x) => !arrBasket.includes(x));
+    setWish(same);
   };
+  //
+  let navigate = useNavigate();
+
+  //
   useEffect(() => {
     setWish(props.product.product);
   }, [props.product]);
@@ -56,16 +61,26 @@ function RightModal(props) {
         <>
           {basket?.map((produit, index) => {
             return (
-              <ModalBasket
-                key={index}
-                image={produit.image}
-                title={produit.title}
-                price={produit.price}
-                count={produit.rating.count}
-                id={produit.id}
-              />
+              <>
+                <ModalBasket
+                  key={index}
+                  image={produit.image}
+                  title={produit.title}
+                  price={produit.price}
+                  count={produit.rating.count}
+                  id={produit.id}
+                />
+              </>
             );
           })}
+          <button
+            className=" h-10 w-20 px-5 py-3 text-white border border-grey-200 flex items-center justify-center mx-auto bg-orange-500 rounded-lg"
+            onClick={() => {
+              navigate("/checkout", { replace: true });
+            }}
+          >
+            Pay
+          </button>
         </>
       )}
     </div>

@@ -5,6 +5,7 @@ import Home from "./componant/Home";
 import Boutique from "./componant/Boutique";
 import Loader from "./componant/Loader";
 import { useEffect, useState } from "react";
+import CheckOut from "./componant/CheckOut";
 function App() {
   const [loader, setLoader] = useState(true);
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/boutique" element={<Boutique />} />
+        <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </div>
   );
