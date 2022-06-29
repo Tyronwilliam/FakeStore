@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { addToWish } from "../../../action/wishlist/addToWishlistAction";
+import { deleteToWish } from "../../../action/wishlist/addToWishlistAction";
 import { addToBasket } from "../../../action/basket/basketAction";
 import { HeartIcon } from "@heroicons/react/outline";
 import Facebook from "../../../asset/facebook.png";
@@ -9,11 +10,38 @@ import Twitter from "../../../asset/twitter.png";
 
 function ModalProduct(props) {
   const [color, setColor] = useState(false);
-
+  const [disabled, setDisabled] = useState(false);
+  let arrBasket;
+  const handleCart = () => {
+    if (disabled || color) {
+      setDisabled(true);
+      return;
+    } else {
+      props.addToBasket(props.produit);
+      setDisabled(true);
+    }
+  };
+  const handleWish = (produit) => {
+    if (color || arrBasket?.includes(produit)) {
+      setDisabled(true);
+      return;
+    } else {
+      props.addToWish(produit);
+      setDisabled(true);
+      setColor(true);
+    }
+  };
   useEffect(() => {
     let arrWish = props.product.product;
-    arrWish.includes(props.produit) ? setColor(true) : setColor(false);
-  }, []);
+    arrBasket = props.item.item;
+
+    if (arrWish.includes(props.produit) || arrBasket?.includes(props.produit)) {
+      setColor(true);
+      setDisabled(true);
+    } else {
+      setColor(false);
+    }
+  }, [props.product, props.item]);
   return (
     <div className="w-[300px] bg-white h-[400px] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 overflow-y-auto md:w-[700px] md:flex   ">
       {/* Image */}
@@ -75,9 +103,14 @@ function ModalProduct(props) {
           <p>qty : </p>
           <input type="number" className="border w-10 text-center ml-2" />
           <button
-            className="ml-3 bg-orange-500 text-white text-xs p-2"
+            disabled={disabled}
+            className={
+              disabled
+                ? "bg-gray-200 ml-3 text-white text-xs p-2"
+                : "ml-3 bg-orange-500 text-white text-xs p-2"
+            }
             onClick={() => {
-              props.addToBasket(props.produit);
+              handleCart();
             }}
           >
             Ajouter au panier
@@ -90,8 +123,7 @@ function ModalProduct(props) {
                 : "w-4 h-4 cursor-pointer text-gray-500 ml-5"
             }
             onClick={() => {
-              props.addToWish(props.produit);
-              setColor(true);
+              handleWish(props.produit);
             }}
           />
         </div>
@@ -134,6 +166,7 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = {
   addToWish,
   addToBasket,
+  deleteToWish,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ModalProduct);

@@ -4,7 +4,7 @@ const initialState = {
   item: [],
 };
 
-const WishReducer = (state = initialState, action) => {
+const BasketReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_BASKET:
       const sameItem = state.item?.find(
@@ -23,4 +23,4 @@ const WishReducer = (state = initialState, action) => {
       return state;
   }
 };
-export default WishReducer;
+export default BasketReducer;

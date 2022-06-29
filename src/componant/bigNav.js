@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { HeartIcon } from "@heroicons/react/outline";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
@@ -13,16 +13,24 @@ function BigNav(props) {
   const [show, setShow] = useState(false);
   const [showBasket, setShowBasket] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
-
+  const [lengthWish, setLengthWish] = useState(0);
+  const [lengthCart, setLengthCart] = useState(0);
+  // sHow modal Wish
   const handle = () => {
     setShow(!show);
   };
+  // Show modal basket
   const handleBasket = () => {
     setShowBasket(!showBasket);
   };
+  // Show modal Search
   const handleSearch = () => {
     showSearch ? setShowSearch(false) : setShowSearch(true);
   };
+  useEffect(() => {
+    setLengthCart(props.item.item.length);
+    setLengthWish(props.product.product.length);
+  }, [props.product, props.item]);
   return (
     <div className="hidden md:flex justify-between items-center px-4 pt-6 mb-8 md:text-[15px] relative">
       {/* Logo */}
@@ -73,9 +81,7 @@ function BigNav(props) {
           {/* Round and Number of item in Wishlist */}
 
           <div className="w-3 h-3 bg-orange-300 absolute top-0 -right-1 rounded-full flex items-center justify-center cursor-pointer">
-            <p className="text-white text-[8px] font-semibold">
-              {props.product.product.length}
-            </p>
+            <p className="text-white text-[8px] font-semibold">{lengthWish}</p>
           </div>
         </div>
         <div className="relative">
@@ -88,9 +94,7 @@ function BigNav(props) {
           />
           {/* Round and Number of item in cart */}
           <div className="w-3 h-3 bg-orange-300 absolute top-0 -right-1 rounded-full flex items-center justify-center cursor-pointer">
-            <p className="text-white text-[8px] font-semibold ">
-              {props.item.item.length}
-            </p>
+            <p className="text-white text-[8px] font-semibold ">{lengthCart}</p>
           </div>
         </div>
       </div>
@@ -111,7 +115,7 @@ function BigNav(props) {
         }`}
         content="Shopping Cart"
       />
-   
+
       {showSearch && (
         <div className="bg-white absolute w-3/4 h-full top-1/2">
           <ModalSearch />

@@ -6,6 +6,9 @@ import { deleteItemBasket } from "../../../action/basket/basketAction";
 import { addToBasket } from "../../../action/basket/basketAction";
 
 function ModalWish(props) {
+  const handleAddCart = (prod) => {
+    props.addToBasket(prod);
+  };
   return (
     <div
       className="w-full flex flex-col justify-between md:justify-around border-2 p-5 mb-5 rounded-md mx-auto
@@ -32,7 +35,8 @@ lg:mx-0  cursor-pointer  "
         <p
           className="text-orange-500 hover:border-b border-orange-500"
           onClick={() => {
-            props.addToBasket(props.produits);
+            handleAddCart(props.produits);
+            props.deleteToWish(props.id);
           }}
         >
           Add to cart

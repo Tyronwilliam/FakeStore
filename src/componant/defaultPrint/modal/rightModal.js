@@ -15,6 +15,7 @@ function RightModal(props) {
     let arrWish = props.product.product;
     let arrBasket = props.item.item;
     let same = arrWish?.filter((x) => !arrBasket.includes(x));
+    console.log(same, "what happen ");
     setWish(same);
   };
   //
@@ -26,8 +27,9 @@ function RightModal(props) {
   }, [props.product]);
   useEffect(() => {
     setBasket(props.item.item);
-    productExistinBasket();
-  }, [props.item, basket]);
+    console.log(props.product.product, "mypro");
+    // productExistinBasket();
+  }, [props.item, props.product]);
   return (
     <div className={props.className}>
       {/* Get className from BigNav  */}
