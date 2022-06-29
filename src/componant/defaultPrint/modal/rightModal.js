@@ -13,17 +13,16 @@ function RightModal(props) {
   const [disable, setDisable] = useState(true);
   let navigate = useNavigate();
   //
-  if (basket.length > 0) {
-    setDisable(false);
-  }
+
+  //
   useEffect(() => {
     setWish(props.product.product);
   }, [props.product]);
   useEffect(() => {
     setBasket(props.item.item);
-
     console.log(basket.length);
   }, [props.item]);
+
   return (
     <div className={props.className}>
       {/* Get className from BigNav  */}
