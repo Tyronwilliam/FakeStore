@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import { getAll } from "../Api/fonction";
 import { getElectro } from "../Api/fonction";
 import { getMen } from "../Api/fonction";
@@ -18,7 +18,6 @@ function CategoryList(props) {
           console.log(err, "mon erreur");
           return err;
         }
-        break;
       case "Electro":
         try {
           const res_1 = await getElectro();
@@ -28,7 +27,6 @@ function CategoryList(props) {
           console.log(err_1, "mon erreur");
           return err_1;
         }
-        break;
       case "Bijoux":
         try {
           const res_2 = await getJew();
@@ -38,7 +36,6 @@ function CategoryList(props) {
           console.log(err_2, "mon erreur");
           return err_2;
         }
-        break;
       case "Men":
         try {
           const res_3 = await getMen();
@@ -48,7 +45,6 @@ function CategoryList(props) {
           console.log(err_3, "mon erreur");
           return err_3;
         }
-        break;
       case "Women":
         try {
           const res_4 = await getWomen();
@@ -58,9 +54,7 @@ function CategoryList(props) {
           console.log(err_4, "mon erreur");
           return err_4;
         }
-        break;
       default:
-        break;
     }
   };
 
@@ -73,7 +67,7 @@ function CategoryList(props) {
             whatProduct("Toute");
           }}
         >
-          Toutes
+          All
         </li>
         <li
           className="hover:text-orange-500 cursor-pointer "
@@ -81,7 +75,7 @@ function CategoryList(props) {
             whatProduct("Electro");
           }}
         >
-          Electronique
+          Electronic
         </li>
         <li
           className="hover:text-orange-500 cursor-pointer "
@@ -89,7 +83,7 @@ function CategoryList(props) {
             whatProduct("Bijoux");
           }}
         >
-          Bijoux
+          Jewelry
         </li>
         <li
           className="hover:text-orange-500 cursor-pointer "
@@ -97,7 +91,7 @@ function CategoryList(props) {
             whatProduct("Men");
           }}
         >
-          Vêtement Homme
+          Men's clothing
         </li>
         <li
           className="hover:text-orange-500 cursor-pointer "
@@ -105,7 +99,7 @@ function CategoryList(props) {
             whatProduct("Women");
           }}
         >
-          Vêtement Femme
+          Women's clothing
         </li>
       </ul>
     </div>

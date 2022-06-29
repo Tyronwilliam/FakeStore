@@ -23,7 +23,10 @@ function Order(props) {
       {/* Order item  */}
       {props.item.item?.map((article) => {
         return (
-          <div className="flex justify-between items-center  mb-5">
+          <div
+            className="flex justify-between items-center  mb-5"
+            key={article.id}
+          >
             <p className="text-sm">{article.title}</p>
             <p className="text-green-600 font-bold text-sm">${article.price}</p>
           </div>

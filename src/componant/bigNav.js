@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { connect } from "react-redux";
 import { HeartIcon } from "@heroicons/react/outline";
 import { ShoppingBagIcon } from "@heroicons/react/outline";
@@ -23,7 +23,6 @@ function BigNav(props) {
   const handleSearch = () => {
     showSearch ? setShowSearch(false) : setShowSearch(true);
   };
-  useEffect(() => {}, [show]);
   return (
     <div className="hidden md:flex justify-between items-center px-4 pt-6 mb-8 md:text-[15px] relative">
       {/* Logo */}
@@ -112,8 +111,7 @@ function BigNav(props) {
         }`}
         content="Shopping Cart"
       />
-      {/* <div className="">
-      </div> */}
+   
       {showSearch && (
         <div className="bg-white absolute w-3/4 h-full top-1/2">
           <ModalSearch />

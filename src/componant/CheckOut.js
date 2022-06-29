@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Formu from "../componant/defaultPrint/form";
 import Order from "./defaultPrint/order";
 function CheckOut() {

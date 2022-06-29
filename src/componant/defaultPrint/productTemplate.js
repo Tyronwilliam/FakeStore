@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { XCircleIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
 import { connect } from "react-redux";
@@ -17,9 +17,7 @@ function ProductTemplate(props) {
     // retourne un tableau d'objet
     return stars;
   };
-  useEffect(() => {
-    randomStar();
-  }, []);
+
   return (
     <div>
       <div
@@ -39,13 +37,6 @@ function ProductTemplate(props) {
         <p className="text-orange-500 font-semibold text-lg">{props.price} $</p>
         {/* Star rate */}
         <div className="flex items-center">
-          {/* {props.stars?.map((etoile) => {
-            return (
-              <div className="bg-black">
-                <li>{etoile}</li>
-              </div>
-            );
-          })} */}
           <p className="flex">{randomStar()}</p>
           <p>({props.count} reviews)</p>
         </div>

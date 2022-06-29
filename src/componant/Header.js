@@ -23,7 +23,7 @@ function Header() {
         {/* Name of the Website  */}
         {/* Left Section */}
         <div className="hidden lg:inline-block">
-          <p>Bienvenue sur Fake Store Paris</p>
+          <p>Welcome to The FakeStore</p>
         </div>
         {/* Right Section */}
 
@@ -92,7 +92,7 @@ function Header() {
                     setRegistration("login");
                   }}
                 >
-                  SE CONNECTER
+                  SIGN IN
                 </p>
                 <p
                   className={
@@ -104,15 +104,14 @@ function Header() {
                     setRegistration("register");
                   }}
                 >
-                  S'ENREGISTRER
+                  REGISTER{" "}
                 </p>
               </div>
               {/* Condition for login or register on the page */}
               {registration === "login" ? (
                 <div>
                   <p className="text-sm mb-10 xl:text-lg">
-                    Bienvenue à nouveau, veuillez entrer votre email et votre
-                    mot de passe pour vous connecter
+                    Welcome back, please enter your email and password to login
                   </p>{" "}
                   <form className="flex flex-col w-72 sm:w-80 gap-4 mx-auto">
                     <input
@@ -128,7 +127,7 @@ function Header() {
                       className="border border-gray-500 rounded-sm p-2 w-full mb-4"
                     />
                     <button className="w-full bg-orange-500 p-3 rounded-sm text-white font-semibold">
-                      ME CONNECTER
+                      SIGN IN{" "}
                     </button>
                   </form>
                 </div>
@@ -136,8 +135,7 @@ function Header() {
                 // Login
                 <div>
                   <p className="text-sm mb-10 xl:text-lg">
-                    Bienvenue, veuillez entrer votre email et votre mot de passe
-                    pour vous connecter
+                    Welcome, please enter your email and choose a password to login
                   </p>{" "}
                   <form className="flex flex-col w-72 sm:w-80 gap-4 mx-auto">
                     <input
@@ -159,7 +157,7 @@ function Header() {
                       className="border border-gray-500 rounded-sm p-2 w-full mb-4"
                     />
                     <button className="w-full bg-orange-500 p-3 rounded-sm text-white font-semibold">
-                      S'ENREGISTRER
+                      REGISTER{" "}
                     </button>
                   </form>
                 </div>

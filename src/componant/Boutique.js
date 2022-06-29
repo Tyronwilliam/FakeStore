@@ -48,7 +48,7 @@ function Boutique(props) {
           className="w-full h-full object-cover"
         />
         <h1 className="absolute top-1/2 left-1/2 -translate-x-1/2 md:text-lg lg:text-xl z-20">
-          Boutique Standard
+          Standard Shop{" "}
         </h1>
       </div>
       {/* Category */}
@@ -59,7 +59,7 @@ function Boutique(props) {
           }}
           className="hover:border-b border-orange-500 w-fit mb-5 md:hidden "
         >
-          Voir catégorie
+          See category
         </h2>
         {open && <CategoryList />}
         <div className="hidden md:block mb-5">
@@ -72,7 +72,7 @@ function Boutique(props) {
           }}
           className="hover:border-b border-orange-500 w-fit mb-5 md:hidden  "
         >
-          Filtre
+          Filter
         </h2>
         {open1 && <FiltreList />}
         <div className="hidden md:block mb-5">
@@ -84,11 +84,11 @@ function Boutique(props) {
             <p className="font-semibold text-orange-500">
               {selectedProducts.length}
             </p>
-            <p className="ml-1 font-semibold">produits trouvés |</p>
+            <p className="ml-1 font-semibold">products found |</p>
           </div>
           <div className="flex items-center  md:ml-1 text-orange-500 cursor-pointer hover:border-b hover:border-orange-500">
             <XCircleIcon className="w-4 h-4" />
-            <p>Supprimer les filtres</p>
+            <p>Delete filter</p>
           </div>
         </div>
         {/* Products */}

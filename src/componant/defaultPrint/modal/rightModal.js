@@ -14,7 +14,7 @@ function RightModal(props) {
   const productExistinBasket = () => {
     let arrWish = props.product.product;
     let arrBasket = props.item.item;
-    let same = arrWish.filter((x) => !arrBasket.includes(x));
+    let same = arrWish?.filter((x) => !arrBasket.includes(x));
     setWish(same);
   };
   //
@@ -32,7 +32,7 @@ function RightModal(props) {
     <div className={props.className}>
       {/* Get className from BigNav  */}
       <div className="flex justify-between items-center mb-5">
-        <h1 className="text-lg ">{props.content}</h1>
+        <h1 className=" text-sm md:text-lg ">{props.content}</h1>
         <XCircleIcon
           className="w-6 h-6  top-[35px] right-24 text-orange-500 cursor-pointer"
           onClick={() => {
@@ -61,16 +61,14 @@ function RightModal(props) {
         <>
           {basket?.map((produit, index) => {
             return (
-              <>
-                <ModalBasket
-                  key={index}
-                  image={produit.image}
-                  title={produit.title}
-                  price={produit.price}
-                  count={produit.rating.count}
-                  id={produit.id}
-                />
-              </>
+              <ModalBasket
+                key={index}
+                image={produit.image}
+                title={produit.title}
+                price={produit.price}
+                count={produit.rating.count}
+                id={produit.id}
+              />
             );
           })}
           <button

@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-function form(props) {
+function Form(props) {
+  const [country, setCountry] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [adress, setAdress] = useState("");
+  const [city, setCity] = useState("");
+  const [number, setNumber] = useState();
+  const [company, setCompany] = useState("");
+  useEffect(() => {
+    console.log(country);
+  }, [country]);
   const classDefault =
     "max-w-[360px] p-1 shadow appearance-none border rounded text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4";
   return (
@@ -18,12 +29,19 @@ function form(props) {
           <span className="text-red-500">*</span>
         </div>
 
-        <select name="country" id="country" className={`${classDefault}`}>
+        <select
+          name="country"
+          id="country"
+          className={`${classDefault}`}
+          onChange={(e) => {
+            setCountry(e.target.value);
+          }}
+        >
           <option value="">Please choose a country</option>
-          <option value="dog">France</option>
-          <option value="cat">USA </option>
-          <option value="hamster">England</option>
-          <option value="parrot">Italy</option>
+          <option value="france">France</option>
+          <option value="usa">USA </option>
+          <option value="england">England</option>
+          <option value="italy">Italy</option>
         </select>
         {/* FirstName */}
         <div className="flex">
@@ -33,7 +51,9 @@ function form(props) {
         <input
           type="text"
           name="firstname"
-          onChange={(e) => {}}
+          onChange={(e) => {
+            setFirstName(e.currentTarget.value);
+          }}
           className={`${classDefault}`}
         />
         {/* LastName */}
@@ -44,7 +64,9 @@ function form(props) {
         <input
           type="text"
           name="lastname"
-          onChange={(e) => {}}
+          onChange={(e) => {
+            setLastName(e.currentTarget.value);
+          }}
           className={`${classDefault}`}
         />
         {/* Company Name */}
@@ -52,7 +74,9 @@ function form(props) {
         <input
           type="text"
           name="company"
-          onChange={(e) => {}}
+          onChange={(e) => {
+            setCompany(e.currentTarget.value);
+          }}
           className={`${classDefault}`}
         />
         {/* Adress */}
@@ -63,7 +87,9 @@ function form(props) {
         <input
           type="text"
           name="adress"
-          onChange={(e) => {}}
+          onChange={(e) => {
+            setAdress(e.currentTarget.value);
+          }}
           className={`${classDefault}`}
         />
         {/* City */}
@@ -74,7 +100,9 @@ function form(props) {
         <input
           type="text"
           name="city"
-          onChange={(e) => {}}
+          onChange={(e) => {
+            setCity(e.currentTarget.value);
+          }}
           className={`${classDefault}`}
         />
         {/* email */}
@@ -85,7 +113,9 @@ function form(props) {
         <input
           type="text"
           name="email"
-          onChange={(e) => {}}
+          onChange={(e) => {
+            setEmail(e.currentTarget.value);
+          }}
           className={`${classDefault}`}
         />
         {/* Phone */}
@@ -93,10 +123,17 @@ function form(props) {
           <label>Number</label>
           <span className="text-red-500">*</span>
         </div>
-        <input type="number" name="phone" className={`${classDefault}`} />
+        <input
+          type="number"
+          name="phone"
+          className={`${classDefault}`}
+          onChange={(e) => {
+            setNumber(e.currentTarget.value);
+          }}
+        />
       </form>
     </div>
   );
 }
 
-export default form;
+export default Form;
