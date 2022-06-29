@@ -10,26 +10,20 @@ import { useNavigate } from "react-router-dom";
 function RightModal(props) {
   const [wish, setWish] = useState([]);
   const [basket, setBasket] = useState([]);
-  // Check if we add wish to basket
-  const productExistinBasket = () => {
-    let arrWish = props.product.product;
-    let arrBasket = props.item.item;
-    let same = arrWish?.filter((x) => !arrBasket.includes(x));
-    console.log(same, "what happen ");
-    setWish(same);
-  };
-  //
+  const [disable, setDisable] = useState(true);
   let navigate = useNavigate();
-
   //
+  if (basket.length > 0) {
+    setDisable(false);
+  }
   useEffect(() => {
     setWish(props.product.product);
   }, [props.product]);
   useEffect(() => {
     setBasket(props.item.item);
-    console.log(props.product.product, "mypro");
-    // productExistinBasket();
-  }, [props.item, props.product]);
+
+    console.log(basket.length);
+  }, [props.item]);
   return (
     <div className={props.className}>
       {/* Get className from BigNav  */}
@@ -74,10 +68,13 @@ function RightModal(props) {
             );
           })}
           <button
-            className=" h-10 w-20 px-5 py-3 text-white border border-grey-200 flex items-center justify-center mx-auto bg-orange-500 rounded-lg"
+            className={`h-10 w-20 px-5 py-3 text-white border border-grey-200 flex items-center justify-center mx-auto  rounded-lg ${
+              disable ? "bg-gray-200 " : "bg-orange-500"
+            }`}
             onClick={() => {
               navigate("/checkout", { replace: true });
             }}
+            disabled={disable}
           >
             Pay
           </button>
